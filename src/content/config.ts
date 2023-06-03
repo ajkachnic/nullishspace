@@ -15,10 +15,10 @@ const BlogPost = z.object({
   heroImage: z.string().optional(),
 });
 
-const blog = defineCollection({
-  // Type-check frontmatter using a schema
-  schema: z.object({ frontmatter: BlogPost }).or(BlogPost), // From filesystem
-});
+// const blog = defineCollection({
+//   // Type-check frontmatter using a schema
+//   schema: z.object({ frontmatter: BlogPost }).or(BlogPost), // From filesystem
+// });
 
 const page = defineCollection({
   schema: z.object({
