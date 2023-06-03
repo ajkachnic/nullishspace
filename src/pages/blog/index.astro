@@ -15,6 +15,11 @@ const posts = await ghostClient.posts
     filter: "tags:-archived",
   })
   .catch((err: unknown) => console.error(err));
+
+Astro.response.headers.set(
+  "Cache-Control",
+  "public, max-age=3600, stale-while-revalidate=1800"
+);
 ---
 
 <BaseLayout>

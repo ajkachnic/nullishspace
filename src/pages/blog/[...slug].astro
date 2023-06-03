@@ -25,6 +25,11 @@ const props = {
   heroImage: post.featured_image,
 };
 console.log(props);
+
+Astro.response.headers.set(
+  "Cache-Control",
+  "public, max-age=3600, stale-while-revalidate=1800"
+);
 ---
 
 <BlogPost {...props}>
