@@ -10,9 +10,11 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   output: "hybrid",
   experimental: {
-    hybridOutput: true
+    hybridOutput: true,
   },
   site: "https://nullish.space",
   integrations: [mdx(), sitemap(), UnoCSS(), preact()],
-  adapter: vercel()
+  adapter: vercel({
+    analytics: true,
+  }),
 });
