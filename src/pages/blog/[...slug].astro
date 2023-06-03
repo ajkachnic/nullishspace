@@ -2,6 +2,8 @@
 import BlogPost from "../../layouts/BlogPost.astro";
 import { ghostClient } from "../../lib/ghost";
 
+export const prerender = false;
+
 export async function getStaticPaths() {
   const posts = await ghostClient.posts
     .browse({

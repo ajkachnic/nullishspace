@@ -7,6 +7,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Notice from "../../components/Notice.astro";
 import Link from "../../components/Link.astro";
 
+export const prerender = false;
+
 const posts = await ghostClient.posts
   .browse({
     limit: "all",

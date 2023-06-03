@@ -1,15 +1,12 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import { getCollection } from "astro:content";
 import { ghostClient } from "../../lib/ghost";
 import FormattedDate from "../../components/FormattedDate.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Notice from "../../components/Notice.astro";
 import Link from "../../components/Link.astro";
 
-// const posts = (await getCollection("blog")).sort(
-//   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-// );
+export const prerender = false;
+
 const posts = await ghostClient.posts
   .browse({
     limit: "all",
