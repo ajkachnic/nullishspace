@@ -1,13 +1,16 @@
 ---
+import Link from "./Link.astro";
 const today = new Date();
 ---
 
-<footer>
-	&copy; {today.getFullYear()} YOUR NAME HERE. All rights reserved.
+<footer class="font-serif py-16 text-center">
+  <p>
+    If you'd like to get in touch with me, email me at
+    <Link class="font-bold" href="mailto:hey@nullish.space">
+      hey@nullish.space
+    </Link>
+  </p>
+  <p>
+    &copy; {today.getFullYear()} Andrew Kachnic. All rights reserved.
+  </p>
 </footer>
-<style>
-	footer {
-		padding: 25px;
-		text-align: center;
-	}
-</style>

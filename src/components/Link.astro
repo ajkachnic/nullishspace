@@ -1,0 +1,28 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a">;
+
+const { href, class: className, ...props } = Astro.props;
+
+const isExternal = (href || "").toString().startsWith("http");
+---
+
+<a
+  href={href}
+  target={isExternal ? "_blank" : "_self"}
+  class:list={[
+    "text-neutral-700 underline underline-offset-4 decoration-neutral-300 transition-colors dark:(decoration-neutral-600 text-neutral-300)",
+    "focus:(decoration-neutral-400 outline-offset-6 dark:decoration-neutral-500)",
+    "hover:(decoration-neutral-400 dark:decoration-neutral-500) visited:(text-neutral-900 dark:text-neutral-100)",
+    className,
+  ]}
+  {...props}
+>
+  <slot />
+</a>
+<style>
+  a {
+    @apply;
+  }
+</style>

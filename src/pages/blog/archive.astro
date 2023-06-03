@@ -1,0 +1,72 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import { ghostClient } from "../../lib/ghost";
+import FormattedDate from "../../components/FormattedDate.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Notice from "../../components/Notice.astro";
+import Link from "../../components/Link.astro";
+
+// const posts = (await getCollection("blog")).sort(
+//   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+// );
+const posts = await ghostClient.posts
+  .browse({
+    limit: "all",
+  })
+  .catch((err) => console.error(err));
+---
+
+<BaseLayout>
+  <style>
+    table {
+      @apply min-w-full divide-y-2 divide-neutral-200 table-auto text-left;
+    }
+
+    table th {
+      @apply px-4 py-2 font-bold;
+    }
+
+    table tbody {
+      @apply divide-y divide-neutral-200;
+    }
+
+    table tr td {
+      @apply px-4 py-2;
+    }
+  </style>
+
+  <h1 class="font-serif text-5xl">Archive</h1>
+
+  <Notice kind="warning">
+    <p>
+      This page only contains everything I've written, old and new. Beware that
+      older posts may not reflect my current thoughts/opinions. Here be dragons.
+    </p>
+  </Notice>
+
+  <section>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          posts.map((post) => (
+            <tr>
+              <td>
+                <FormattedDate date={new Date(post.published_at)} />
+              </td>
+              <td>
+                <Link href={`/blog/${post.slug}/`}>{post.title}</Link>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </section>
+</BaseLayout>

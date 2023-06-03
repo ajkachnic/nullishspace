@@ -1,21 +1,39 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import BlogPost from "../../layouts/BlogPost.astro";
+import { ghostClient } from "../../lib/ghost";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
-}
-type Props = CollectionEntry<'blog'>;
+  const posts = await ghostClient.posts
+    .browse({
+      limit: "all",
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 
-const post = Astro.props;
-const { Content } = await post.render();
+  return posts.map((post) => {
+    return {
+      params: {
+        slug: post.slug,
+      },
+      props: {
+        post: post,
+      },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const props = {
+  title: post.title,
+  description: post.description,
+  pubDate: new Date(post.published_at),
+  updatedDate: new Date(post.updated_at || post.published_at),
+  heroImage: post.featured_image,
+};
+console.log(props);
 ---
 
-<BlogPost {...post.data}>
-	<h1>{post.data.title}</h1>
-	<Content />
+<BlogPost {...props}>
+  <Fragment set:html={post.html} />
 </BlogPost>
