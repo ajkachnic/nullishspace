@@ -4,28 +4,19 @@ import { ghostClient } from "../../lib/ghost";
 
 export const prerender = false;
 
-export async function getStaticPaths() {
-  const posts = await ghostClient.posts
-    .browse({
-      limit: "all",
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+const { slug } = Astro.params;
 
-  return posts.map((post) => {
-    return {
-      params: {
-        slug: post.slug,
-      },
-      props: {
-        post: post,
-      },
-    };
-  });
+const post = await ghostClient.posts.read({
+  slug,
+});
+
+if (!post) {
+  return {
+    status: 404,
+  };
 }
 
-const { post } = Astro.props;
+// const { post } = Astro.props;
 const props = {
   title: post.title,
   description: post.description,
