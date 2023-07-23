@@ -8,7 +8,7 @@
 }
 
 body {
-  @apply text-neutral-700 font-sans m-auto p-5 max-w-3xl bg-white text-sm;
+  @apply text-neutral-700 font-sans m-auto p-5 max-w-3xl bg-white text-sm 2xl:text-md;
 }
 
 .dark body {
