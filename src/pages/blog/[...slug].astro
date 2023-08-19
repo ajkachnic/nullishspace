@@ -1,37 +1,29 @@
 ---
+import { getCollection, getEntryBySlug } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
-import { ghostClient } from "../../lib/ghost";
 
-export const prerender = false;
+const post = await getEntryBySlug("blog", Astro.params.slug!);
 
-const { slug } = Astro.params;
+const { Content } = await post!.render();
 
-const post = await ghostClient.posts.read({
-  slug,
-});
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
 
-if (!post) {
-  return {
-    status: 404,
-  };
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+  }));
 }
 
-// const { post } = Astro.props;
-const props = {
-  title: post.title,
-  description: post.description,
-  pubDate: new Date(post.published_at),
-  updatedDate: new Date(post.updated_at || post.published_at),
-  heroImage: post.featured_image,
-};
-console.log(props);
+// Astro.response.headers.set(
+//   "Cache-Control",
+//   "public, max-age=3600, stale-while-revalidate=1800"
+// );
 
-Astro.response.headers.set(
-  "Cache-Control",
-  "public, max-age=3600, stale-while-revalidate=1800"
-);
+console.log(post?.data);
 ---
 
-<BlogPost {...props}>
-  <Fragment set:html={post.html} />
+<BlogPost {...post?.data!}>
+  <Content />
 </BlogPost>

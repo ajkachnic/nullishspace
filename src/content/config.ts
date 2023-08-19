@@ -4,21 +4,15 @@ const BlogPost = z.object({
   title: z.string(),
   description: z.string(),
   // Transform string to Date object
-  pubDate: z
-    .string()
-    .or(z.date())
-    .transform((val) => new Date(val)),
-  updatedDate: z
-    .string()
-    .optional()
-    .transform((str) => (str ? new Date(str) : undefined)),
+  pubDate: z.date(),
+  updatedDate: z.date(),
   heroImage: z.string().optional(),
+  archived: z.boolean().optional().default(true),
 });
 
-// const blog = defineCollection({
-//   // Type-check frontmatter using a schema
-//   schema: z.object({ frontmatter: BlogPost }).or(BlogPost), // From filesystem
-// });
+const blog = defineCollection({
+  schema: BlogPost,
+});
 
 const page = defineCollection({
   schema: z.object({
@@ -27,4 +21,4 @@ const page = defineCollection({
   }),
 });
 
-export const collections = {};
+export const collections = { blog };

@@ -1,24 +1,17 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
-import { ghostClient } from "../../lib/ghost";
 import FormattedDate from "../../components/FormattedDate.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Notice from "../../components/Notice.astro";
 import Link from "../../components/Link.astro";
 
-export const prerender = false;
-
-const posts = await ghostClient.posts
-  .browse({
-    limit: "all",
-    filter: "tags:-archived",
-  })
-  .catch((err: unknown) => console.error(err));
+const posts = (await getCollection("blog")).filter(
+  (post) => !post.data.archived,
+);
 
 Astro.response.headers.set(
   "Cache-Control",
-  "public, max-age=3600, stale-while-revalidate=1800"
+  "public, max-age=3600, stale-while-revalidate=1800",
 );
 ---
 
@@ -54,16 +47,15 @@ Astro.response.headers.set(
     <div class="grid grid-cols-2 gap-4">
       {
         posts.map((post) => {
-          const { title, slug, excerpt, published_at } = post;
           return (
             <article>
               <h2 class="text-2xl font-serif">
-                <Link href={`/blog/${slug}/`}>{title}</Link>
+                <Link href={`/blog/${post.slug}/`}>{post.data.title}</Link>
               </h2>
               <p class="text-neutral-500">
-                <FormattedDate date={new Date(published_at)} />
+                <FormattedDate date={post.data.pubDate} />
               </p>
-              <p>{excerpt}</p>
+              <p>{post.data.description}</p>
             </article>
           );
         })
