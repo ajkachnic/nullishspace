@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Table } from "../components/Table";
+import { createColumnHelper } from "@tanstack/table-core";
+import { h } from "solid-js";
+
+type Project = {
+  name: string;
+  description: string;
+  tags: string[];
+  status: "active" | "inactive";
+};
+const columnHelper = createColumnHelper<Project>();
+
+const projects: Project[] = [
+  {
+    name: "zed",
+    description: "email cleint",
+    tags: ["web"],
+    status: "active",
+  },
+];
+const columns = [
+  columnHelper.accessor("name", {
+    header: () => "Name",
+    footer: (props) => props.column.id,
+  }),
+  columnHelper.accessor("description", {
+    header: () => "Description",
+    footer: (props) => props.column.id,
+  }),
+  columnHelper.accessor("status", {
+    header: () => "Status",
+    footer: (props) => props.column.id,
+  }),
+  columnHelper.accessor("tags", {
+    header: () => "Tags",
+    footer: (props) => props.column.id,
+    cell: (info) => `<h1>hi</h1>`,
+  }),
+];
+---
+
+<BaseLayout title="Projects" description="">
+  <h1 class="font-display font-400">Projects</h1>
+
+  <Table columns={columns} data={projects} />
+</BaseLayout>

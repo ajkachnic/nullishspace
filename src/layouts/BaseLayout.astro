@@ -2,10 +2,16 @@
 import "@fontsource/instrument-serif";
 
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
+import Header, { Props as HeaderProps } from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
-const { title, description } = Astro.props;
+interface Props {
+  title: string;
+  description: string;
+  active?: HeaderProps["active"];
+}
+
+const { title, description, active } = Astro.props;
 ---
 
 <html lang="en">
@@ -14,7 +20,7 @@ const { title, description } = Astro.props;
   </head>
 
   <body>
-    <Header />
+    <Header active={active} />
     <main>
       <slot />
     </main>
@@ -49,6 +55,8 @@ const { title, description } = Astro.props;
     </script>
     <style is:global>
       @import "../styles/global.css";
+      @import "../styles/equity.css";
+      @import "https://use.typekit.net/uyp7yvo.css";
     </style>
   </body>
 </html>

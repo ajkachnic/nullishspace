@@ -1,20 +1,33 @@
 ---
 import Link from "./Link.astro";
 
-type Props = {
+export interface Props {
   name: string;
   description: string;
   href?: string;
-};
+  tags?: string[];
+}
 
-const { href, name, description } = Astro.props;
+const { href, name, description, tags } = Astro.props;
 ---
 
-<div>
-  <h3 class="font-medium font-sans">
-    {href ? <Link href={href}>{name}</Link> : name}
-  </h3>
-  <p>
+<div class="font-sans text-sm space-y-1">
+  <div class="flex flex-row items-center gap-4">
+    <h3 class="font-medium text-lg mt-1 mb-1 dark:text-neutral-300">
+      {href ? <Link href={href}>{name}</Link> : name}
+    </h3>
+    <div class="flex gap-2">
+      {
+        tags &&
+          tags.map((tag: string) => (
+            <div class="py-0.25 px-2 bg-neutral-200 text-neutral-600 dark:(bg-neutral-800 text-neutral-400) rounded-md select-none">
+              {tag}
+            </div>
+          ))
+      }
+    </div>
+  </div>
+  <p class="">
     {description}
   </p>
 </div>

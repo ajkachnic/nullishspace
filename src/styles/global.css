@@ -7,12 +7,18 @@
   letter-spacing: 0.02em;
 }
 
+html,
+:root {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  @apply text-neutral-700 font-sans m-auto p-5 max-w-3xl bg-white text-sm 2xl:text-md;
+  @apply text-neutral-700 font-sans m-auto p-5 max-w-3xl bg-white 2xl: text-md;
 }
 
 .dark body {
-  @apply text-neutral-400 font-sans m-auto p-5 max-w-3xl bg-neutral-900 text-sm;
+  @apply text-neutral-400 font-sans m-auto p-5 max-w-3xl bg-neutral-900;
 }
 
 body.trans {
@@ -26,10 +32,10 @@ h2,
 h3,
 h4,
 h5,
-h6,
-b {
-  @apply font-serif text-neutral-900;
+h6 {
+  @apply font-display font-400;
 }
+
 
 .dark h1,
 .dark h2,
@@ -40,4 +46,16 @@ b {
 .dark strong,
 b.dark {
   @apply text-neutral-200;
+}
+
+.highlight {
+    @apply text-black font-500 dark:text-neutral-200;
+}
+
+h1.lined,
+h2.lined,
+h3.lined,
+h4.lined,
+h5.lined {
+    @apply underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600 decoration-2;
 }

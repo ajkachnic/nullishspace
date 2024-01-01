@@ -2,12 +2,12 @@
 import { getCollection, getEntryBySlug } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
 
-const post = await getEntryBySlug("blog", Astro.params.slug!);
+const post = await getEntryBySlug("rants", Astro.params.slug!);
 
 const { Content } = await post!.render();
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getCollection("rants");
 
   return posts
     .filter(

@@ -1,74 +1,74 @@
 ---
 import Link from "../components/Link.astro";
 import Project from "../components/Project.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const projects = [
-  {
-    name: "nectar",
-    description:
-      "Framework for building realtime audio plugins (VSTs) with Zig. Alternative to DISTRHO, JUCE and iPlug2.",
-    href: "https://github.com/ajkachnic/nectar",
-  },
-  {
-    name: "thismusicdoesnotexist",
-    description:
-      "An experiment into generative music, which procedurally generates lofi beats.",
-    href: "https://thismusicdoesnotexist.vercel.app/",
-  },
-  {
-    name: "zebra",
-    description:
-      "Minimalist programming language focusing on elegance, correctness, and readability.",
-  },
-  {
-    name: "nullish.space",
-    href: "https://github.com/ajkachnic/nullishspace",
-    description:
-      "Personal website and blog, built with Astro, UnoCSS, TypeScript, and GhostCMS.",
-  },
-  {
-    name: "stacc analytics",
-    description:
-      "Privacy conscious analytics platform, built with a friend during a hackathon.",
-  },
-  {
-    name: "punct",
-    description:
-      "Novel email client targetting great UX (collaborate with a friend)",
-    href: "https://punct.app",
-  },
-  {
-    name: "fontfind",
-    description:
-      "Tool for finding interesting fonts, using a recommendation engine.",
-  },
-  {
-    name: "stream",
-    description:
-      "Tiny write-only one-user Twitter clone, built with Bun, SQLite, Kysely, and ElysiaJS",
-  },
-];
 ---
 
-<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <h1 class="text-5xl font-serif mt-10 mb-4 2xl:text-6xl">Andrew Kachnic</h1>
-  <ul class="my-4 list-none p-0">
-    <li>
-      Building software for <strong>humans.</strong>
-    </li>
-    <li>
-      Experimenting with <em>novel interfaces.</em>
-    </li>
-    <li>Obsessed with performance.</li>
-  </ul>
+<BaseLayout title="Home" description="" active="home">
+  <main class="font-sans tracking-wide">
+    <h1
+      class="font-display light:font-bold dark:text-neutral-50 text-5xl font-400 mb-2"
+    >
+      I'm Andrew Kachnic.
+    </h1>
+    <section class="select-none">
+      <p>
+        I build interfaces that connect <span class="highlight"
+          >people</span
+        >
+         with <span class="highlight">technology</span>.
+      </p>
+    </section>
 
-  <section>
-    <h2 class="text-2xl font-300 mt-12 mb-2 font-serif py-0">Projects</h2>
-
-    <div class="grid grid-cols-2 2xl:grid-cols-3 gap-2">
-      {projects.map((project) => <Project {...project} />)}
+    <!-- <div class="grid grid-cols-2"> -->
+    <div >
+      <section>
+        <h2 class="font-display font-400 lined">Projects</h2>
+        <!-- <p> -->
+        <!--   For full project list, see this <Link href="/projects"> -->
+        <!--     searchable table -->
+        <!--   </Link> -->
+        <!-- </p> -->
+        <div class="grid grid-cols-2 gap-4">
+        <Project
+          name="zed"
+          tags={["web", "email", "WIP"]}
+          description="Work-in-progress email client, built using Next.js and RSCs. Emphasis on perfecting the email experience"
+        />
+        <Project
+          name="rhombus"
+          tags={["web", "audio", "WIP"]}
+          description="In-browser drum machine for musical experimentation and collaboration. Using SvelteKit and ToneJS"
+        />
+        <Project
+          name="zing"
+          tags={["zig", "networking", "systems"]}
+          description="Ping implementation in Zig, using a custom network stack and raw sockets."
+        />
+        <Project
+          name="nectar"
+          tags={["zig", "audio"]}
+          href="https://github.com/ajkachnic/nectar"
+          description="Framework for building realtime audio plugins (VSTs) with Zig. Alternative to DISTRHO, JUCE and iPlug2."
+        />
+        <Project
+          name="ora"
+          href="https://github.com/ajkachnic/ora"
+          tags={["zig", "graphics"]}
+          description={'"Blazingly fast" launcher, similar to Spotlight and Raycast. Focused on performance and ease of use.'}
+        />
+                </div>
+      </section>
+      <!-- <section> -->
+      <!--   <h2 class="font-display font-400 lined">Featured Writing</h2> -->
+      <!--   <ul> -->
+      <!--     <li> -->
+      <!--       <Link href=""> -->
+      <!--         Implementing <code>ping</code> from scratch in Zig -->
+      <!--       </Link> -->
+      <!--     </li> -->
+      <!--   </ul> -->
+      <!-- </section> -->
     </div>
-  </section>
+  </main>
 </BaseLayout>

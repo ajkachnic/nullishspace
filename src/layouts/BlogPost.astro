@@ -13,7 +13,7 @@ updatedDate =
 <BaseLayout title={title} description={description}>
   <article class="md:max-w-2xl mx-auto">
     {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-    <h1 class="text-5xl font-bold my-6 font-serif">{title}</h1>
+    <h1 class="text-5xl font-bold my-6">{title}</h1>
     <div class="my-4">
       Published on <FormattedDate date={pubDate} />
     </div>
@@ -25,7 +25,7 @@ updatedDate =
       )
     }
     <hr />
-    <div class="prose my-8 m-auto md:max-w-2xl">
+    <div class="prose text-lg my-8 m-auto font-serif md:max-w-2xl">
       <slot />
     </div>
   </article>
