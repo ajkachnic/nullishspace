@@ -22,7 +22,7 @@ Astro.response.headers.set(
 );
 ---
 
-<BaseLayout>
+<BaseLayout title="Andrew Kachnic - Blog" active="blog">
   <style>
     table {
       @apply min-w-full divide-y-2 divide-neutral-200 table-auto text-left;
@@ -41,14 +41,14 @@ Astro.response.headers.set(
     }
   </style>
 
-  <h1 class="text-5xl font-serif">My Blog</h1>
+  <h1>My Blog</h1>
 
-  <Notice kind="info">
-    <p>
-      This page only contains my recent blog posts. For a complete list of all
-      posts, visit the <Link href="/blog/archive/">archive</Link>.
-    </p>
-  </Notice>
+  <!-- <Notice kind="info"> -->
+  <!--   <p> -->
+  <!--     This page only contains my recent blog posts. For a complete list of all -->
+  <!--     posts, visit the <Link href="/blog/archive/">archive</Link>. -->
+  <!--   </p> -->
+  <!-- </Notice> -->
 
   <section>
     <div class="grid grid-cols-2 gap-4">

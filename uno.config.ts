@@ -12,7 +12,7 @@ export default defineConfig({
   ],
   theme: {
     fontFamily: {
-      sans: 'neue-haas-grotesk-display, Switzer, Inter, sans-serif',
+      sans: 'Helvetica Neue, Inter, sans-serif',
       display: 'Instrument Serif, serif',
       serif: 'equity_a, serif',
     }

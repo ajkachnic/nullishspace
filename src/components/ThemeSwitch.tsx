@@ -26,7 +26,7 @@ export default function ThemeSwitch() {
   return (
     <button
       onClick={onClick}
-      class="text-sm font-sans rounded-md border-blue-200 border-solid bg-blue-100 text-neutral-900 dark:(bg-blue-700 text-neutral-200 border-blue-500)"
+      class="text-sm font-sans rounded-md border-neutral-200 border-solid bg-neutral-100 text-neutral-900 dark:(bg-neutral-900 text-neutral-200 border-neutral-800)"
     >
       {theme === "light" ? "🌙" : "🌞"}
       {/* Toggle Theme */}

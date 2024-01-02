@@ -9,20 +9,17 @@ export interface Props {
 
 const { active } = Astro.props;
 
-const activeStyles = "!text-neutral-900 dark:!text-neutral-100";
+const activeStyles = "tracking-tight font-500 text-black dark:text-neutral-100";
 ---
 
 <header>
-  <nav class="flex gap-4 font-sans mt-6 mb-12">
-    <Link href="/" class={active == "home" ? activeStyles : ""}>home</Link>
-    <Link href="/blog" class={active == "blog" ? activeStyles : ""}>blog</Link>
-    <!-- <Link href="/rants" class={active == "rants" ? activeStyles : ""}> -->
-    <!--   rants -->
-    <!-- </Link> -->
-    <Link href="/about" class={active == "about" ? activeStyles : ""}>
+  <nav class="flex gap-4 font-sans mt-6 mb-12 items-center">
+    <Link href="/" underline={false} class={active == "home" ? activeStyles : ""}>home</Link>
+    <Link href="/blog" underline={false} class={active == "blog" ? activeStyles : ""}>blog</Link>
+    <Link href="/about" underline={false} class={active == "about" ? activeStyles : ""}>
       about
     </Link>
-    <Link href="https://github.com/ajkachnic">github</Link>
+    <Link href="https://github.com/ajkachnic" underline={false}>github</Link>
     <ThemeSwitch client:visible />
   </nav>
 </header>

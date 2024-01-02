@@ -5,59 +5,47 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Home" description="" active="home">
-  <main class="font-sans tracking-wide">
-    <h1
-      class="font-display light:font-bold dark:text-neutral-50 text-5xl font-400 mb-2"
-    >
-      I'm Andrew Kachnic.
-    </h1>
+  <main class="font-sans mt-16">
+    <h1 class="text-black dark:text-neutral-50 mb-2">I’m Andrew Kachnic.</h1>
     <section class="select-none">
       <p>
-        I build interfaces that connect <span class="highlight"
-          >people</span
-        >
+        I build interfaces that connect <span class="highlight">people</span>
          with <span class="highlight">technology</span>.
       </p>
     </section>
 
-    <!-- <div class="grid grid-cols-2"> -->
-    <div >
-      <section>
-        <h2 class="font-display font-400 lined">Projects</h2>
-        <!-- <p> -->
-        <!--   For full project list, see this <Link href="/projects"> -->
-        <!--     searchable table -->
-        <!--   </Link> -->
-        <!-- </p> -->
+    <div>
+      <section class="mt-12">
+        <h2 class="text-xl tracking-tight">Projects</h2>
         <div class="grid md:grid-cols-2 gap-4">
-        <Project
-          name="zed"
-          tags={["web", "email", "WIP"]}
-          description="Work-in-progress email client, built using Next.js and RSCs. Emphasis on perfecting the email experience"
-        />
-        <Project
-          name="rhombus"
-          tags={["web", "audio", "WIP"]}
-          description="In-browser drum machine for musical experimentation and collaboration. Using SvelteKit and ToneJS"
-        />
-        <Project
-          name="zing"
-          tags={["zig", "networking", "systems"]}
-          description="Ping implementation in Zig, using a custom network stack and raw sockets."
-        />
-        <Project
-          name="nectar"
-          tags={["zig", "audio"]}
-          href="https://github.com/ajkachnic/nectar"
-          description="Framework for building realtime audio plugins (VSTs) with Zig. Alternative to DISTRHO, JUCE and iPlug2."
-        />
-        <Project
-          name="ora"
-          href="https://github.com/ajkachnic/ora"
-          tags={["zig", "graphics"]}
-          description={'"Blazingly fast" launcher, similar to Spotlight and Raycast. Focused on performance and ease of use.'}
-        />
-                </div>
+          <Project
+            name="zed"
+            tags={["web", "email", "WIP"]}
+            description="Work-in-progress email client, built using Next.js and RSCs. Emphasis on perfecting the email experience"
+          />
+          <Project
+            name="rhombus"
+            tags={["web", "audio", "WIP"]}
+            description="In-browser drum machine for musical experimentation and collaboration. Using SvelteKit and ToneJS"
+          />
+          <Project
+            name="zing"
+            tags={["zig", "networking", "systems"]}
+            description="Ping implementation in Zig, using a custom network stack and raw sockets."
+          />
+          <Project
+            name="nectar"
+            tags={["zig", "audio"]}
+            href="https://github.com/ajkachnic/nectar"
+            description="Framework for building realtime audio plugins (VSTs) with Zig. Alternative to DISTRHO, JUCE and iPlug2."
+          />
+          <Project
+            name="ora"
+            href="https://github.com/ajkachnic/ora"
+            tags={["zig", "graphics"]}
+            description={'"Blazingly fast" launcher, similar to Spotlight and Raycast. Focused on performance and ease of use.'}
+          />
+        </div>
       </section>
       <!-- <section> -->
       <!--   <h2 class="font-display font-400 lined">Featured Writing</h2> -->

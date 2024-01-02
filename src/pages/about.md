@@ -8,11 +8,11 @@ updatedDate: 'May 24 2023'
 
 ## Who I Am
 
-I'm Andrew Kachnic. I build software, make music, and design interfaces. My time is often spent thinking about silly things like **how to optimize my neovim configuration**, or *why is this thing so slow? could I make it faster/better?*
+I'm Andrew Kachnic. I build software, make music, and design interfaces. My time is often spent thinking about silly things like why is this thing so slow? could I make it faster/better?
 
 ## What I Care About
 
-I care about people, technology, and the interfaces that bridge the gaps. I'm constantly thinking about how we can improve the experience of working with software. And **I think we can have much better human interfaces than the ones that current exist** and *I want to try to build them*.
+I care about people, technology, and the interfaces that bridge the gaps. I'm constantly thinking about how we can improve the experience of working with software. And **I think we can have much better human interfaces than the ones that current exist** and I want to try to build them.
 
 ### Relationships
 
