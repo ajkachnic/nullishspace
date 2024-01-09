@@ -23,24 +23,6 @@ Astro.response.headers.set(
 ---
 
 <BaseLayout title="Andrew Kachnic - Blog" active="blog">
-  <style>
-    table {
-      @apply min-w-full divide-y-2 divide-neutral-200 table-auto text-left;
-    }
-
-    table th {
-      @apply px-4 py-2 font-bold;
-    }
-
-    table tbody {
-      @apply divide-y divide-neutral-200;
-    }
-
-    table tr td {
-      @apply px-4 py-2;
-    }
-  </style>
-
   <h1>My Blog</h1>
 
   <!-- <Notice kind="info"> -->
@@ -51,7 +33,7 @@ Astro.response.headers.set(
   <!-- </Notice> -->
 
   <section>
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid md:grid-cols-2 gap-4">
       {
         posts.map((post) => {
           return (
