@@ -12,6 +12,8 @@ export default defineConfig({
   site: "https://nullish.space",
   integrations: [mdx(), sitemap(), UnoCSS(), solid()],
   adapter: vercel({
-    analytics: true,
+    webAnalytics: {
+      enabled: true
+    }
   }),
 });
